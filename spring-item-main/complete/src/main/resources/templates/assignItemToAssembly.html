@@ -1,0 +1,31 @@
+<!-- src/main/resources/templates/assignItemToAssembly.html -->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head> 
+    <title>Sorting Items</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h2>Sorting Items to Assembly Group!</h2>
+    <form method="post" th:action="@{/items/assign}">
+        <label for="assemblyId">Select Assembly:</label>
+        <select id="assemblyId" name="assemblyId">
+            <!-- Populate this dropdown with available assemblies -->
+            <option th:each="assembly : ${assemblies}" th:value="${assembly.id}" th:text="${assembly.name}"></option>
+        </select>
+
+        <label for="itemId">Select Item:</label>
+        <select id="itemId" name="itemId">
+            <!-- Populate this dropdown with available items -->
+            <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.nomenclature}"></option>
+        </select>
+
+        <a href="itemAssigned.html">
+            <button>Assign!</button>
+        </a>
+        
+    </form>
+</body>
+</html>
